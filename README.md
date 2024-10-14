@@ -72,7 +72,7 @@ Data cleaning involved the following steps:
 
 - **Splitting the Duration Column:** We extracted the numeric part of the duration column (e.g., converting "90 min" and "135 min" to integers) to allow for more precise analysis of movie lengths.
 
-```bash
+```python
 # Splitting the 'duration' column
 df['duration_numeric'] = df['duration'].str.extract(r'(\d+)').astype(int)
 ```
@@ -92,15 +92,27 @@ Several visualizations were generated in the Jupyter Notebook using libraries li
  - **Duration Distribution:** Histograms and distribution plots showing the distribution of durations for both movies and TV shows.
   
 ## Example: Distplot for Movie Duration
-```bash
-Data Visualization
-Several visualizations were generated in the Jupyter Notebook using libraries like Matplotlib, Seaborn, and Plotly:
+```python
+import plotly.figure_factory as ff
 
-Most Watched Genres: A bar chart showing the most popular genres on Netflix.
-Ratings Distribution: A histogram or count plot depicting the distribution of Netflix content ratings.
-Duration Distribution: Histograms and distribution plots showing the distribution of durations for both movies and TV shows.
-Example: Distplot for Movie Duration
+df_movie = df[df['type'] == "Movie"]
+x1 = df_movie['duration_numeric'].fillna(0).astype(float)
+
+fig = ff.create_distplot([x1], ["Movie"], bin_size=0.7, curve_type='normal', colors=["#b20710"])
+fig.update_layout(title_text="Movie Duration with Normal Distribution")
+fig.show()
+
 ```
 
- 
+ ## R Integration
+We also integrated R visualizations by generating charts (such as the distribution of ratings or genres) using R's `ggplot2`library. The following R code, for example, generates a histogram for the duration of Netflix content:
+```R
+# R Visualization using ggplot2
+library(ggplot2)
+
+ggplot(df, aes(x=duration_numeric)) +
+    geom_histogram(binwidth=10, fill="blue", color="black") +
+    labs(title="Duration of Netflix Content", x="Duration (minutes)", y="Count") +
+    theme_minimal()
+```
 

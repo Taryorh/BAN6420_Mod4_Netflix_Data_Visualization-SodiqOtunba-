@@ -110,9 +110,11 @@ We also integrated R visualizations by generating charts (such as the distributi
 # R Visualization using ggplot2
 library(ggplot2)
 
-ggplot(df, aes(x=duration_numeric)) +
-    geom_histogram(binwidth=10, fill="blue", color="black") +
-    labs(title="Duration of Netflix Content", x="Duration (minutes)", y="Count") +
-    theme_minimal()
+ggplot(data = df, aes(x = rating)) +
+  geom_bar() +
+  labs(title = "Distribution of Ratings", x = "Rating", y = "Count") +
+  theme_minimal()
 ```
 
+## Conclusion
+This Jupyter Notebook demonstrated how to clean, explore, and visualize Netflix's shows and movies dataset. Insights include the distribution of genres, ratings, and durations, with a particular focus on how these features differ between movies and TV shows. This analysis can help Netflix better understand user preferences and trends over time.

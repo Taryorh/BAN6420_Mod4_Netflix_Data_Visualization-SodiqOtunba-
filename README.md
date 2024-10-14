@@ -72,3 +72,35 @@ Data cleaning involved the following steps:
 
 - **Splitting the Duration Column:** We extracted the numeric part of the duration column (e.g., converting "90 min" and "135 min" to integers) to allow for more precise analysis of movie lengths.
 
+```bash
+# Splitting the 'duration' column
+df['duration_numeric'] = df['duration'].str.extract(r'(\d+)').astype(int)
+```
+
+## Data Exploration
+We performed extensive data exploration, including:
+
+- Descriptive statistics for numerical and categorical columns.
+- Data distribution analysis for features such as release_year, rating, and duration.
+- Correlation analysis between numeric features (excluding categorical identifiers like show_id).
+
+ ## Data Visualization
+Several visualizations were generated in the Jupyter Notebook using libraries like Matplotlib, Seaborn, and Plotly:
+
+ - **Most Watched Genres:** A bar chart showing the most popular genres on Netflix.
+ - **Ratings Distribution:** A histogram or count plot depicting the distribution of Netflix content ratings.
+ - **Duration Distribution:** Histograms and distribution plots showing the distribution of durations for both movies and TV shows.
+  
+## Example: Distplot for Movie Duration
+```bash
+Data Visualization
+Several visualizations were generated in the Jupyter Notebook using libraries like Matplotlib, Seaborn, and Plotly:
+
+Most Watched Genres: A bar chart showing the most popular genres on Netflix.
+Ratings Distribution: A histogram or count plot depicting the distribution of Netflix content ratings.
+Duration Distribution: Histograms and distribution plots showing the distribution of durations for both movies and TV shows.
+Example: Distplot for Movie Duration
+```
+
+ 
+
